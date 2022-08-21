@@ -12,6 +12,7 @@
 /build
 /src/*
 /src/*
+/designs/*
 
 # misc
 .DS_Store

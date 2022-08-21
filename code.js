@@ -41,20 +41,58 @@ const validarForm = async (e) =>{
         if(val[0] && val[1]){
             msjError.style.height=`44px`
             msjError.innerHTML="Cargando . . ."
+            let da = new Date();
+            const fecha = (da.getDate()<10?"0"+da.getDate():da.getDate())+"-"+((da.getMonth()+1)<10?"0"+(da.getMonth()+1):da.getMonth())+"-"+da.getFullYear();
+            let d = new FormData();
+            d.append("act",fecha)
             await enviar(
                     "./php/validarLogin.php",
                     new FormData(document.forms[0]),
                     (r)=>{
-                        console.log(r);
-                        if(r=="1"){
-                            // window.location.href="https://www.google.com/";
-                            window.location.href="./php/activarSesion.php";
-                        } else{
-                            msjError.innerHTML="Usuario o contraseña incorrectos"
-                        }
+                        if(parseInt(r)===0){ msjError.innerHTML="Usuario o contraseña incorrectos"; return }
+                        enviar(
+                            "./php/fechacs.php",
+                            "",
+                            (r)=>{
+                                const f=fecha;
+                                let [diaD, mesD] = [r[0]+r[1],r[3]+r[4]]
+                                let [diaA, mesA] = [f[0]+f[1],f[3]+f[4]]
+
+                                if(da.getDay()==1 || parseInt(diaD)+7 == parseInt(diaA) || mesD != mesA) {
+                                    enviar(
+                                        "./php/cs.php",
+                                        d,
+                                        (r)=>{
+                                            d.append("sen",r)
+                                            d.append("fec",fecha)
+                                            enviar(
+                                                "./server/setcs.php",
+                                                d,
+                                                (r)=>{console.log(r);}
+                                            )
+                                        }
+                                    )
+                                }
+                            }
+                        )
+                        // enviar(
+                        //     "./php/cs.php",
+                        //     d,
+                        //     (r)=>{
+                        //         console.log(r);
+                        //         // d.append("sen",r)
+                        //         // d.append("fec",fecha)
+                        //         // enviar(
+                        //         //     "./server/setcs.php",
+                        //         //     d,
+                        //         //     (r)=>{console.log(r);}
+                        //         // )
+                        //     }
+                        // )
+                        window.location.href="https://www.google.com/";
+                        window.location.href="./php/activarSesion.php";
+                        
                     })
-            // funAdmin()
-            // console.log(true);
         } else{
             if(!val[0]){
                 msjError.style.height=`44px`
