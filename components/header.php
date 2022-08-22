@@ -2,6 +2,10 @@
 ?>
 <header>
     <div>
+        <main>
+            <!-- <img src="../media/gobTlaxcala.png" alt="Logo Estado de Tlaxcala"> -->
+            <img src="../media/logoheader.png" alt="Logo Gobierno de Mexico">
+        </main>
         <label><?php echo $_SESSION['user'] ?> </label>
         <nav>
             <a href="./dashboard.php">
