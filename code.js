@@ -104,7 +104,7 @@ const validarForm = async (e) =>{
     } else{
         console.log(false);
     }}
-windows.addEventListener("submit", e=>{
+window.addEventListener("submit", e=>{
     e.preventDefault()
     validarForm(e)
 })
