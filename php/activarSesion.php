@@ -9,10 +9,15 @@
     
     $res = mysqli_query($con, $sen);
     while($row=mysqli_fetch_assoc($res)) {
+        $ide = $row["id"];
         $_SESSION['name']=$row["name"];
         $_SESSION['user']=$row["name"];
     }
+    $_SESSION['admin'] = (($ide!=1 && $ide!=2) ? "false" : "true");
+
+    // if($ide!=1 && $ide!=2) die("Usted No tiene Acceso");
+
     // echo $_SESSION['user'];
     header("location:../pages/dashboard.php");
-    $_SESSION['value']=="0";
+    $_SESSION['value']==null;
 ?>

@@ -1,6 +1,6 @@
 <div class="search">
     <form class="inpSearch" id="inpSearch">
-        <input type="text" minlength="0" placeholder="Buscar" list="autocomplet">
+        <input type="text" minlength="0" placeholder="Buscar" value="1" list="autocomplet">
         <select>
             <option value="nur">Nur</option>
             <option value="nombre">Nombre</option>

@@ -48,46 +48,21 @@
                     <a href="#cuota" class="cuotaLink">Cuota</a>
                 </nav>
             </div> -->
-            
-            <div>
-                <h2>Archivo</h2>
-                <span>
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z"></path></svg>
-                </span>
-                <nav>
-                    <section>
-                        <a href="#">Usuario Actual</a>
-                        <a href="#">Cambio de usuario</a>
-                    </section>
-                    <section>
-                        <a href="#">Información del sistema</a>
-                        <a href="#">Soporte Técnico</a>
-                    </section>
-                    <section>
-                        <a href="#">Barra de herramientas</a>
-                        <a href="#">Generación de respaldos</a>
-                    </section>
-                    <section>
-                        <a href="#">Salir</a>
-                    </section>
-                </nav>
-            </div>
+        <?php if($_SESSION['admin']==="true"){ ?>
             <div>
                 <h2>Reportes</h2>
                 <span>
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"></path><path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"></path></svg>
                     </span>
                 <nav>
-                    <section>
-                        <a href="#">Status de contratos</a>
-                    </section>
+                    
                     <section>
                         <a href="#">Clasificacion de atrasos</a>
                         <a href="#">Rangos de adeudo</a>
                     </section>
                     <section>
                         <a href="#">Recaudacion clasificada</a>
-                        <a href="#">Resumen Contable</a>
+                        
                     </section>
                     <section>
                         <a href="#">Informe para SPF</a>
@@ -96,10 +71,58 @@
                     <section>
                         <a href="#">Subsidios y descuentos</a>
                     </section>
+                    
+                </nav>
+            </div>
+            <div>
+                <h2>Reportes</h2>
+                <span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"></path><path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"></path></svg>
+                    </span>
+                <nav>
+                    
                     <section>
-                        <a href="#">Comportamiento de los ingresos</a>
-                        <a href="#">Comparativo de los ingresos</a>
+                        <a href="#">Clasificacion de atrasos</a>
+                        <a href="#">Rangos de adeudo</a>
                     </section>
+                    <section>
+                        <a href="#">Recaudacion clasificada</a>
+                        
+                    </section>
+                    <section>
+                        <a href="#">Informe para SPF</a>
+                        <a href="#">Informe para OFS</a>
+                    </section>
+                    <section>
+                        <a href="#">Subsidios y descuentos</a>
+                    </section>
+                    
+                </nav>
+            </div>
+        <?php } ?>
+            <div>
+                <h2>Reportes</h2>
+                <span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"></path><path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"></path></svg>
+                    </span>
+                <nav>
+                    
+                    <section>
+                        <a href="#">Clasificacion de atrasos</a>
+                        <a href="#">Rangos de adeudo</a>
+                    </section>
+                    <section>
+                        <a href="#">Recaudacion clasificada</a>
+                        
+                    </section>
+                    <section>
+                        <a href="#">Informe para SPF</a>
+                        <a href="#">Informe para OFS</a>
+                    </section>
+                    <section>
+                        <a href="#">Subsidios y descuentos</a>
+                    </section>
+                    
                 </nav>
             </div>
             <div>
@@ -111,29 +134,27 @@
                     <section>
                         <a href="#">Referencias para contratos</a>
                         <a href="#">Referencias para otros Servicios</a>
-                        <a href="#">Cancelacion de referencias</a>
+                        
                     </section>
                     <section>
                         <a href="#">Consulta de referencias</a>
                         <a href="#">Consulta de movimientos pagados</a>
                     </section>
+                    
                     <section>
-                        <a href="#">Cobro de referencias</a>
-                    </section>
-                    <section>
-                        <a href="#">Emisión de recibos de contratos</a>
-                        <a href="#">Emisión de recibos de otros servicios</a>
+                        <a href="#">Reeinprecion de recibos de contratos</a>
+                        <a href="#">Reeinprecion de recibos de otros servicios</a>
                     </section>
                     <section>
                         <a href="#">Cancelación de recibos</a>
-                        <a href="#">Anulación de cancelaciones</a>
+                        
                     </section>
                     <section>
                         <a href="#">Corte de caja</a>
                     </section>
                     <section>
                         <a href="#">Consulta de recibos</a>
-                        <a href="#">Certificación de recibos</a>
+                        
                     </section>
                 </nav>
             </div>
@@ -143,9 +164,7 @@
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-width="2" d="M16,16 C16,14.8954305 12.8659932,14 9,14 C5.13400675,14 2,14.8954305 2,16 C2,17.1045695 5.13400675,18 9,18 C12.8659932,18 16,17.1045695 16,16 Z M2,16 L2,20.9367547 C2,22.0762536 5.13400675,23 9,23 C12.8659932,23 16,22.0762537 16,20.9367548 L16,16 M9,5 C4.581722,5 1,5.8954305 1,7 C1,8.1045695 4.581722,9 9,9 M1,7 L1,12.0000002 C1,13.0128881 4.581722,14 9,14 M23,4 C23,2.8954305 19.9004329,2 16.0769231,2 C12.2534133,2 9.15384615,2.8954305 9.15384615,4 C9.15384615,5.1045695 12.2534133,6 16.0769231,6 C19.9004329,6 23,5.1045695 23,4 Z M16,16 C19.8235098,16 23.0000002,15.0128879 23.0000002,14 L23,4 M9.15384615,3.99999999 L9.15384615,14.1660042 M8.99999999,9.00000001 C8.99999999,10.0128879 12.2534135,11 16.0769233,11 C19.9004331,11 23.0000004,10.0128879 23.0000004,9.00000001"></path></svg>
                 </span>
                 <nav>
-                    <section>
-                        <a href="#">Recuperación de adeudos</a>
-                    </section>
+                    
                     <section>
                         <a href="#">Cortes realizados</a>
                         <a href="#">Conexiones contratadas</a>
@@ -154,13 +173,10 @@
                         <a href="#">Reconexiones pendientes</a>
                         <a href="#">Reconexiones realizadas</a>
                     </section>
-                    <section>
-                        <a href="#">Cargo de reconexiones</a>
-                        <a href="#">Modificar reconexión</a>
-                    </section>
+                    
                 </nav>
             </div>
-            <div>
+            <!-- <div>
                 <h2>Movimientos</h2>
                 <span>
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256.352 93.28c-65.93 0-125.644 4.402-168.39 11.402-21.374 3.5-38.557 7.704-49.683 12.01-5.563 2.155-9.59 4.392-11.624 6.02-.637.51-.72.65-.95.897.23.245.312.39.95.9 2.034 1.627 6.06 3.864 11.623 6.017 11.125 4.307 28.308 8.512 49.68 12.012 42.748 7 102.46 11.4 168.392 11.4 65.93 0 125.643-4.4 168.39-11.4 21.374-3.5 38.557-7.706 49.682-12.013 5.562-2.153 9.587-4.39 11.62-6.017.64-.51.723-.655.952-.9-.23-.247-.313-.39-.95-.9-2.035-1.626-6.06-3.863-11.622-6.017-11.125-4.307-28.308-8.512-49.682-12.01-42.747-7-102.46-11.404-168.39-11.404zm-.352 9.183a163.82 16.505 0 0 1 92.246 2.867v27.258A163.82 16.505 0 0 1 256 135.473 163.82 16.505 0 0 1 92.182 118.97 163.82 16.505 0 0 1 256 102.462zm110.246 4.322a163.82 16.505 0 0 1 53.572 12.184 163.82 16.505 0 0 1-53.572 12.182v-24.367zM25 144.395v106.216h.154v8.585c.015-.522.326.768 3.977 2.98 4.275 2.587 11.744 5.63 21.66 8.442 3.438.976 7.193 1.93 11.21 2.862V155.956c-11.84-2.584-21.97-5.45-30.22-8.644-2.423-.94-4.67-1.905-6.78-2.917zm462 .337c-1.905.89-3.923 1.746-6.078 2.58-13.184 5.104-31.178 9.373-53.272 12.99-44.187 7.236-104.57 11.64-171.298 11.64-60.444 0-115.64-3.622-158.352-9.68V280.08c11.88 1.733 24.956 3.294 39.1 4.63 73.627 6.96 164.876 6.96 238.504 0 36.813-3.48 66.478-8.47 86.308-14.093 9.915-2.812 17.386-5.855 21.66-8.443 1.945-1.178 2.918-2.08 3.428-2.604V144.732zM48 288.514V496h38V296.46c-14.57-2.36-27.292-5.02-38-7.946zm416 .19c-21.43 5.786-50.79 10.532-86.703 13.927-75.007 7.092-166.884 7.092-241.89 0-4.578-.432-9.045-.89-13.407-1.364V496h342V288.705z"></path></svg>
@@ -246,7 +262,7 @@
                         <a href="#">Zonas</a>
                     </section>
                 </nav>
-            </div>
+            </div> -->
         </main>
     </div>
     <script src="code.js"></script>
