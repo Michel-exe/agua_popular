@@ -1,4 +1,5 @@
 <?php
+include("../php/validarSesion.php");
 include("./validarAdmin.php");
 
 if(!isset($_POST['upInp'])) die("Error peticion denegada");

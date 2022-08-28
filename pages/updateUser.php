@@ -1,4 +1,5 @@
 <?php
+    include("../php/validarSesion.php");
     include("../php/validarAdmin.php");
 ?>
 <!DOCTYPE html>

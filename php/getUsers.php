@@ -1,5 +1,6 @@
 <?php 
     include("./cn.php");
+    include("../php/validarSesion.php");
     include("./validarAdmin.php");
     
     $sen= "SELECT id,name FROM users";
