@@ -1,9 +1,9 @@
 <?php
     include("../php/validarSesion.php");
-    include("../php/cn.php");
     
-    if(!isset($_GET['ide']) || !isset($_GET['opc'])) die("Recurso no encontrado");
+    if(!isset($_GET['ide']) || !isset($_GET['opc'])) die("Recurso inexistente");
 
+    include("../php/cn.php");
     $nur = $_GET['ide'];
     $opc = $_GET['opc'];
 
