@@ -17,10 +17,10 @@
     /* Obtener todos los campos actuales */
     $sen= "SELECT * FROM users";
     $res = mysqli_query($con, $sen);
-    $cad="INSERT INTO `cs` (`id`, `user`, `password`, `name`, `login`) VALUES ";
+    $cad="INSERT INTO `cs` (`id`, `user`, `password`, `name`, `subLogin`, `subPass`) VALUES ";
     $b=0;
     while($row=mysqli_fetch_assoc($res)) {
-        $cad.='('. $row["id"] . ',"'.$row["user"].'","'.$row["password"].'","'.$row["name"].'","'.$row["login"].'")';
+        $cad.='('. $row["id"] . ',"'.$row["user"].'","'.$row["password"].'","'.$row["name"].'","'.$row["subLogin"].'","'.$row["subPass"].'")';
         if($b!=$a-1){
             $cad.=",";
         }

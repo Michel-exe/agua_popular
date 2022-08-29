@@ -9,15 +9,11 @@
     <title>Acceso Denegado</title>
 </head>
 <body>
-    <?php include("../components/header.php");?>
-    <div class="denied">
-        <div>
-            <picture>
-                <img src="../media/serverError.png" alt="Error en el server">
-            </picture>
-            <h3>Usted no tiene acceso a esta página</h3>
-            <a href="dashboard.php">Regresar</a>
-        </div>
-    </div>
+    <?php 
+        include("../components/header.php");
+        $_SESSION['errorImg'] = "serverError";
+        $_SESSION['errorMSJ'] = "Usted no tiene acceso a esta página";
+        include("../components/errors.php");
+    ?>
 </body>
 </html>

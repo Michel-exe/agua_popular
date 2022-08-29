@@ -79,7 +79,7 @@ const component = ({id,name}) =>{
     </div>
     `
 }
-const obtenerUsers =async ()=>{
+const obtenerUsers = async ()=>{
     await fetch("../php/getUsers.php")
         .then(res => res.json())
         .then(r => {
@@ -88,11 +88,23 @@ const obtenerUsers =async ()=>{
             })
         })
 }
-obtenerUsers()
+const cargar = async () =>{
+    let val= window.prompt("Ingrese la contraseña")
+    let d = new FormData();
+    d.append("sub",val);
+    await fetch("../php/subPassword.php",{
+        method: 'POST',
+        body: d
+    }).then(res => res.text())
+      .then(async r => {
+        if(r=="0") await cargar();
 
-// nombre
-// user
-// pass
+        await obtenerUsers();
+        return;
+    })
+}
+cargar();
+
 
 
 

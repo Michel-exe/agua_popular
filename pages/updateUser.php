@@ -1,6 +1,7 @@
 <?php
     include("../php/validarSesion.php");
     include("../php/validarAdmin.php");
+    // sleep(10);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,13 +13,11 @@
     <title>Modificar Usuarios</title>
 </head>
 <body>
-    <?php include("../components/header.php"); ?>
-    <div class="updateUser">
-        <h2>Actualizar Contraseña</h2>
+    <?php include("../components/header.php");?>
+    <div class='updateUser'>
+        <h2>Actualizar Contraseñas</h2>
         <main></main>
     </div>
-    <!-- <script src="../fetch.js"></script> -->
-    <script src="../pages/modificarUsers.js"></script>
+    <script src='../pages/modificarUsers.js'></script>
 </body>
-
 </html>
