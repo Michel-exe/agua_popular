@@ -7,20 +7,31 @@
     $nur = $_GET['ide'];
     $opc = $_GET['opc'];
 
-    $sen = "SELECT * FROM general WHERE $opc = '$nur'";
+    $sen = "SELECT * FROM tomas WHERE $opc = '$nur'";
     $res = mysqli_query($con, $sen);
     
     if(!$res) die('Nur no existente');
     $c =0;
     // $json = array();
     while($row = mysqli_fetch_array($res)) {
+        // echo $row['nombre'];
+        $tab_contrato = $row['contrato'];
         $tab_nombre = $row['nombre'];
-        $tab_nur = $row['nur'];
-        $tab_fecha = $row['fecha'];
-        $tab_lastMes = $row['lastMes'];
+        $tab_tipo = $row['tipo'];
+        $tab_ultFecha = $row['ultFecha'];
         $tab_cuota = $row['cuota'];
-        $tab_recargos = $row['recargos'];
-        $tab_fecha = $row['fecha'];
+        $tab_saldo = $row['saldo'];
+        $tab_estado = $row['estado'];
+
+        $dir= "Calle: ".$row['calle']." mzn. ".$row['mzn']. " n.  ".$row['num'].". Entre calle: ".$row['calle1']." y calle: ".$row['calle2']. ". En la colonia: ".$row['colonia']." de Nanacamilpa De Mariano Arista Tlaxcala Mexico.";
+        // $dir= "calle ".$row['calle']." ".$row['num']." ".$row['colonia']." Nanacamilpa De Mariano Arista";
+
+
+        // $tab_nur = $row['nur'];
+        // $tab_fecha = $row['fecha'];
+        // $tab_lastMes = $row['lastMes'];
+        // $tab_recargos = $row['recargos'];
+        // $tab_fecha = $row['fecha'];
         // echo $row[]
         $c++;
     //   $json[] = array(
@@ -56,31 +67,29 @@
         <form class="nurForm">
             <section>
                 <label for="">Contrato:</label>
-                <input type="text" disabled value=<?php echo $tab_nur ?>>
+                <input type="text" disabled value="<?php echo $tab_contrato ?>">
             </section>
             <section>
                 <label for="">Nombre:</label>
-                <input type="text" disabled value=<?php echo $tab_nombre ?>>
+                <input type="text" disabled value="<?php echo $tab_nombre ?>">
             </section>
             <section>
                 <label for="">Tipo de Servicio:</label>
-                <select>
-                    <option value="residencial">Residencial</option>
-                    <option value="comercial">Comercial</option>
-                </select>
+                <input type="text" disabled value="<?php echo $tab_tipo ?>">
             </section>
             <section>
-                <label for="">U Pago:</label>
-                <input type="text" disabled value=<?php echo $tab_lastMes ?>>
+                <label for="">Ultimo Pago:</label>
+                <input type="text" disabled value="<?php echo $tab_ultFecha ?>">
             </section>
             <section>
                 <label for="">Cuota:</label>
-                <input type="text" disabled value=<?php echo $tab_cuota ?>>
+                <input type="text" disabled value="<?php echo $tab_cuota ?>">
             </section>
             <section>
                 <label for="">Saldo:</label>
-                <input type="text" disabled value=<?php echo $tab_recargos ?>>
+                <input type="text" disabled value="<?php echo $tab_saldo ?>">
             </section>
+            
             <section class="cond">
                 <label for="">Paga:</label>
                 <label for=""></label>
@@ -89,11 +98,11 @@
             </section>
             <section>
                 <label for="">Pago:</label>
-                <input type="text" disabled value=<?php echo $tab_recargos ?>>
+                <input type="text" disabled value="<?php echo "--- $$$" ?>">
             </section>
             <section>
                 <label for="">Recargos:</label>
-                <input type="text" disabled value=<?php echo $tab_recargos ?>>
+                <input type="text" disabled value="<?php echo "--- $$$" ?>">
             </section>
             <section>
                 <label for="">Total:</label>
@@ -101,12 +110,12 @@
             </section>
             <section>
                 <label for="">Direccion:</label>
-                <textarea></textarea>
+                <textarea><?php echo $dir; ?></textarea>
                 <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
             </section>
             <section class="busEst">
                 <label>Estado:</label>
-                <input type="text" disabled value="Activo" id="status">
+                <input type="text" disabled value="<?php echo $tab_estado ?>" id="status">
             </section>
             <button type="submit">Guardar</button>
         </form>

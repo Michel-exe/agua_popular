@@ -1,10 +1,9 @@
 <div class="search">
     <form class="inpSearch" id="inpSearch">
-        <input type="text" minlength="0" placeholder="Buscar" value="Ro" list="autocomplet">
+        <input type="text" minlength="0" placeholder="Buscar" list="autocomplet">
         <select>
-            <option value="apellido">Apellido</option>
+            <option value="numRegistro">Nur</option>
             <option value="nombre">Nombre</option>
-            <option value="nur">Nur</option>
             <option value="calle">Calle</option>
         </select>
         <datalist id="autocomplet">

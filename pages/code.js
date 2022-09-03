@@ -14,26 +14,21 @@ document.getElementById("inpSearch").addEventListener("submit",e=>{
 document.querySelector("#inpSearch").addEventListener("keyup",async e=>{
     let [t,her] = [e.target,e.target.nextElementSibling.value]
     let au = document.getElementById("autocomplet")
-    if(her==="nombre" || her==="apellido"){
+
+    if(her==="nur"){
         au.innerHTML='';
-        let d = new FormData()
-        d.append("ide",t.value)
-        d.append("opc",her)
-        await fetch("../php/search.php",{
-            method:"POST",
-            body: d
-        }) .then(res =>res.json())
-           .then(r => {
-            console.log(r);
-                r.map(v => {
-                    au.innerHTML+=`
-                        <option value="${v.a}"></option>
-                    `
-                })
-           })
-    } else{
-        au.innerHTML='';
+        return
     }
+    au.innerHTML='';
+    let d = new FormData()
+    d.append("ide",t.value)
+    d.append("opc",her)
+    await fetch("../php/search.php",{
+        method:"POST",
+        body: d
+    }) .then(res =>res.json())
+       .then(r=>r.map(v=>au.innerHTML+=`<option value="${v.a}"></option>`))
+ 
 })
 
 document.querySelector("#inpSearch select").addEventListener('change', e=>{
