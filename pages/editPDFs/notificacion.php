@@ -3,7 +3,7 @@
     include("../../php/validarAdmin.php");
     include("../../php/cn.php");
 
-    $sen="SELECT * FROM pdfrecibodecobro";
+    $sen="SELECT * FROM pdfnotificaciones";
     $que= mysqli_query($con,$sen);
 
     $daID= array();
@@ -46,7 +46,7 @@
             obj.pdf.style.height=`${obj.imgPDF.scrollHeight}px`
         }
     </script>
-    <title>PDF Recibo de Cobro</title>
+    <title>PDF Notificacion</title>
 </head>
 <body>
     <?php
@@ -54,7 +54,7 @@
     ?>
     <div class="PDF">
         <div class="viewPDF">
-                <img src="../../documents/RECIBO-DE-COBRO-1.png" alt="pdf" id="imgPDF">
+                <img src="../../documents/NOTIFICACION 2.png" alt="pdf" id="imgPDF">
                 <div class="pdf" id="pdf" style="font-size: 16px; font-weight: 300;">
                     <?php
                         for ($i=0; $i < $cD; $i++) { 
@@ -68,11 +68,11 @@
                 </div>
             <form class="btnPDF">
                 <button>Restaurar</button>
-                <button type="submit" data-form="pdfrecibodecobro">Guardar</button>
+                <button type="submit" data-form="pdfnotificaciones">Guardar</button>
             </form>
         </div>
         <div class="rangePDF">
-            <input type="range" min=".5" max="4" step="0.1" value=".5" id="rangeScale">
+            <input type="range" min=".5" max="4" step="0.1" value="1.2" id="rangeScale">
         </div>
         <div class="editPDF">
             <form id="editPDF">

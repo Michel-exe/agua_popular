@@ -1,16 +1,11 @@
 <?php
     include("./validarSesion.php");
-    if(!isset($_POST['arr'])) die("Hubo un error inesperado");
+    if(!isset($_POST['arr']) || !isset($_POST['pdf'])) die("Hubo un error inesperado");
     
-    // $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-    // echo json_encode($arr);
-    
-    // header("Content-type: application/json");
-    
+    // pdfNotificaciones
+
     $arr = $_POST['arr'];
-    // $arr = json_encode($arr);
-    // $arr= json_decode($arr, true);
-    // echo $arr;
+    $pdf = $_POST['pdf'];
     
     $newArray = explode('},{',$arr);
     $newArray[0]=substr($newArray[0],2);
@@ -24,15 +19,13 @@
         array_push($daId,$val[3]);
     }
     include("./cn.php");
-    // $sen ="UPDATE `users` SET `subLogin` = 'admin', `subPass` = '12345' WHERE `users`.`id` = 2"
-    // echo count($newArray);
-    // echo $newArray[0]
-    
-    // $arr = json_decode($_POST['arr']);
-    // echo strval($arr);
 
-    // echo gettype($arr);
+    $sen ="";
+    for ($i=0; $i <count($daId) ; $i++) { 
+        $sen .="UPDATE $pdf SET campo = '$daDa[$i]' WHERE id = $daId[$i];";
+    }
+    $res = mysqli_multi_query($con,$sen);
+    if(!$res) die("Disculpe hubo un error");
 
-    // foreach ( $arr as $va ) {
-    //     echo $campo.'='.$va;
-    // }
+    echo "Actualizado";
+?>

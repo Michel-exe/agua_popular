@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2022 a las 21:52:25
+-- Tiempo de generación: 04-09-2022 a las 03:23:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -1158,14 +1158,35 @@ INSERT INTO `pagos` (`id`, `subId`, `numRegistro`, `fecha`, `numRecibo`, `mesPag
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pdfnotificaciones`
+--
+
+CREATE TABLE `pdfnotificaciones` (
+  `id` int(11) NOT NULL,
+  `campo` longtext COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `estiloSection` varchar(150) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `fecha` varchar(150) COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `pdfnotificaciones`
+--
+
+INSERT INTO `pdfnotificaciones` (`id`, `campo`, `estiloSection`, `fecha`) VALUES
+(1, 'Por Medio Del Presente Le Envió Un Cordial Saludo Y Al Mismo Tiempo Me Permito Notificarle el estado de cuenta que arroja esta comisión, por los conceptos y las cantidades que se reflejan en el presente, acuda cuanto lo antes posible a nuestras oficinas y aproveche las facilidades que le ofrecemos. ', 'top: 34.4%;left: 13.8%;max-width: 76%;font-size: .53em;', ''),
+(2, 'Sin Más Por El Momento Y Esperando Contar Con Su Pronta Y Positiva Respuesta para evitar un corte innecesario del servicio, Me Despido De Usted Agradeciendo El Pequeño Espacio Que Realizo. ', 'top: 36.8%;left: 13.8%;max-width: 76%;font-size: .53em;', ''),
+(3, '¡¡Muchas Gracias!! ', 'top: 39.2%;left: 13.8%;max-width: 76%;font-size: .53em;', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pdfrecibodecobro`
 --
 
 CREATE TABLE `pdfrecibodecobro` (
   `id` int(11) NOT NULL,
-  `campo` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `campo` longtext COLLATE utf8mb4_spanish2_ci NOT NULL,
   `estiloSection` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `estiloLabel` varchar(150) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `fecha` varchar(150) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
@@ -1173,15 +1194,15 @@ CREATE TABLE `pdfrecibodecobro` (
 -- Volcado de datos para la tabla `pdfrecibodecobro`
 --
 
-INSERT INTO `pdfrecibodecobro` (`id`, `campo`, `estiloSection`, `estiloLabel`, `fecha`) VALUES
-(1, 'MUNICIPIO DE NANACAMILPA DE MARIANO ARISTA TLAXCALA', 'font-weight: 900;top: 12%;left: 0%;font-size: .65em;text-align: center;', '', '01/09/2022'),
-(2, 'MNM850101MY9', 'font-weight: 900;top: 14%;left: 0%;font-size: .7em;text-align: center;', '', '01/09/2022'),
-(3, '*COMISIÓN MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO *', 'top: 19.4%;left: 13.8%;font-size: .75em;', 'font-size: 16px; font-weight: 300;', '02/09/2022'),
-(4, 'PAGO DE DERECHOS POR SERVICIOS DE AGUA POTABLE Y ALCANTARILLADO', 'top: 22%;left: 13.8%;font-size: .75em;', 'font-size: 16px; font-weight: 300;', '02/09/2022'),
-(5, 'PALACIO MUNICIPAL S/N, NANACAMILPA DE MARIANO ARISTA, TLAXCALA, C.P. 90280', 'top: 24.7%;left: 13.8%;font-size: .7em;', 'font-size: 16px; font-weight: 300;', '02/09/2022'),
-(6, '<b>NOTA:</b> ESTE RECIBO DEBERÁ PAGARSE DENTRO DE LOS CINCO PRIMEROS DIAS DE CADA MES SEGÚN EL ARTÍCULO 64, DEL REGLAMENTO DEL AGUA POTABLE DEL MUNICIPIO.', 'top: 66.5%;left: 13.8%;font-size: .55em;max-width: 80%;', 'font-size: 16px; font-weight: 300;', '02/09/2022'),
-(8, '“AGUA DE TODOS Y PARA TODOS”', 'top: 73.45%;left: 0%;font-size: .75em;text-align: center;', 'font-size: 16px; font-weight: 300;', '02/09/2022'),
-(9, '“JUNTOS HACEMOS UNA NUEVA HISTORIA.”', 'top: 76.45%;left: 0%;font-size: .75em;text-align: center;', 'font-size: 16px; font-weight: 300;', '02/09/2022');
+INSERT INTO `pdfrecibodecobro` (`id`, `campo`, `estiloSection`, `fecha`) VALUES
+(1, 'MUNICIPIO DE NANACAMILPA DE MARIANO ARISTA TLAXCALA', 'font-weight: 900;top: 12%;left: 0%;font-size: .65em;text-align: center;', '01/09/2022'),
+(2, 'MNM850101MY9', 'font-weight: 900;top: 14%;left: 0%;font-size: .7em;text-align: center;', '01/09/2022'),
+(3, '*COMISIÓN MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO *', 'top: 19.4%;left: 13.8%;font-size: .75em;', '02/09/2022'),
+(4, 'PAGO DE DERECHOS POR SERVICIOS DE AGUA POTABLE Y ALCANTARILLADO', 'top: 22%;left: 13.8%;font-size: .75em;', '02/09/2022'),
+(5, 'PALACIO MUNICIPAL S/N, NANACAMILPA DE MARIANO ARISTA, TLAXCALA, C.P. 90280', 'top: 24.7%;left: 13.8%;font-size: .7em;', '02/09/2022'),
+(6, '<b>NOTA:</b> ESTE RECIBO DEBERÁ PAGARSE DENTRO DE LOS CINCO PRIMEROS DIAS DE CADA MES SEGÚN EL ARTÍCULO 64, DEL REGLAMENTO DEL AGUA POTABLE DEL MUNICIPIO.', 'top: 66.5%;left: 13.8%;font-size: .55em;max-width: 80%;', '02/09/2022'),
+(8, '“AGUA DE TODOS Y PARA TODOS”', 'top: 73.45%;left: 0%;font-size: .75em;text-align: center;', '02/09/2022'),
+(9, '“JUNTOS HACEMOS UNA NUEVA HISTORIA.”', 'top: 76.45%;left: 0%;font-size: .75em;text-align: center;', '02/09/2022');
 
 -- --------------------------------------------------------
 
@@ -5614,6 +5635,12 @@ ALTER TABLE `pagos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `pdfnotificaciones`
+--
+ALTER TABLE `pdfnotificaciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `pdfrecibodecobro`
 --
 ALTER TABLE `pdfrecibodecobro`
@@ -5664,6 +5691,12 @@ ALTER TABLE `general`
 --
 ALTER TABLE `pagos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+
+--
+-- AUTO_INCREMENT de la tabla `pdfnotificaciones`
+--
+ALTER TABLE `pdfnotificaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pdfrecibodecobro`

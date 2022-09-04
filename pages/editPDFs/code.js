@@ -1,7 +1,5 @@
-
 CapaPDF();
 document.getElementById("rangeScale").addEventListener("input", e => CapaPDF());
-
 document.getElementById("editPDF").addEventListener("keyup", e => {
     let t = e.target
     document.getElementById(t.getAttribute("data-element")).innerHTML = t.value
@@ -25,15 +23,17 @@ window.addEventListener("submit",async e =>{
             val: f[i].value,
         })
     }
+    // console.log(e.target);
+    // console.log(e.target[1]);
+    // console.log(e.target[1].getAttribute("data-form"));
     const d = new FormData()
     d.append("arr",JSON.stringify(obj))
+    d.append("pdf",e.target[1].getAttribute("data-form"))
     await fetch("../../php/updatePDF.php",{
         method: "POST",
         body: d
     }).then(res => res.text())
-      .then(r=>console.log(r))
-    // d.append("ide1",f[0].value)
-    // d.append("val1",f[0].value)
+      .then(r=>alert(r))
 
     // d.append("ide1",f[0].value)
     // d.append("ide1",f[0].value)

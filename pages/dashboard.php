@@ -65,7 +65,7 @@
                     </section>
                     <section>
                         <a href="./editPDFs/reciboDeCobro.php">Editar Recibo</a>
-                        <a href="#">Editar Notificacion</a>
+                        <a href="./editPDFs/notificacion.php">Editar Notificacion</a>
                     </section>
                     <section>
                         <a href="#">Informe para SPF</a>
