@@ -4,7 +4,8 @@ document.getElementById("inpSearch").addEventListener("submit",e=>{
     if(inpV.value.length>0 && selV.value.length>0){
         console.log(inpV.value);
         console.log(selV.value);
-        window.location.href=`./busqueda.php?ide=${inpV.value}&opc=${selV.value}`
+        // window.location.href=`./busqueda.php?ide=${inpV.value}&opc=${selV.value}`
+        window.location.href=`./busqueda.php?ide=${inpV.value}`
     } else{
         e.target.style.border=`2px solid #ff0000`
         e.target[0].focus()
@@ -15,7 +16,7 @@ document.querySelector("#inpSearch").addEventListener("keyup",async e=>{
     let [t,her] = [e.target,e.target.nextElementSibling.value]
     let au = document.getElementById("autocomplet")
 
-    if(her==="nur"){
+    if(her==="numRegistro"){
         au.innerHTML='';
         return
     }
@@ -27,8 +28,9 @@ document.querySelector("#inpSearch").addEventListener("keyup",async e=>{
         method:"POST",
         body: d
     }) .then(res =>res.json())
-       .then(r=>r.map(v=>au.innerHTML+=`<option value="${v.a}"></option>`))
- 
+       .then(r=>r.map(v=>au.innerHTML+=`<option value="${v.n}">${v.a}</option>`))
+    // .then(res => res.text())
+    // .then(r => console.log(r))
 })
 
 document.querySelector("#inpSearch select").addEventListener('change', e=>{

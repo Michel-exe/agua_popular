@@ -1,20 +1,20 @@
 <?php
     include("../php/validarSesion.php");
     
-    if(!isset($_GET['ide']) || !isset($_GET['opc'])) die("Recurso inexistente");
+    if(!isset($_GET['ide'])) die("Recurso inexistente");
 
     include("../php/cn.php");
     $nur = $_GET['ide'];
-    $opc = $_GET['opc'];
+    // $opc = $_GET['opc'];
 
-    $sen = "SELECT * FROM tomas WHERE $opc = '$nur'";
+    $sen = "SELECT * FROM tomas WHERE numRegistro = '$nur'";
     $res = mysqli_query($con, $sen);
     
     if(!$res) die('Nur no existente');
     $c =0;
     // $json = array();
     while($row = mysqli_fetch_array($res)) {
-        // echo $row['nombre'];
+        // echo $row['numRegistro'];
         $tab_contrato = $row['contrato'];
         $tab_nombre = $row['nombre'];
         $tab_tipo = $row['tipo'];
@@ -23,8 +23,11 @@
         $tab_saldo = $row['saldo'];
         $tab_estado = $row['estado'];
 
-        $dir= "Calle: ".$row['calle']." mzn. ".$row['mzn']. " n.  ".$row['num'].". Entre calle: ".$row['calle1']." y calle: ".$row['calle2']. ". En la colonia: ".$row['colonia']." de Nanacamilpa De Mariano Arista Tlaxcala Mexico.";
-        // $dir= "calle ".$row['calle']." ".$row['num']." ".$row['colonia']." Nanacamilpa De Mariano Arista";
+        $dir= "Calle: ".$row['calle']." mzn.".$row['mzn']. " n. ".$row['num'].". Entre calle: ".$row['calle1']." y calle: ".$row['calle2']. ". En la colonia: ".$row['colonia']." de Nanacamilpa De Mariano Arista Tlaxcala Mexico.";
+
+        $col= ($row['colonia']==="ARENAS" ? "DOMINGO+".$row['colonia']: $row['colonia']);
+
+        $dirLink= "calle+".$row['calle']."+".$row['num'].",+".$col."+Cd+Nanacamilpa+Tlax";
 
 
         // $tab_nur = $row['nur'];
@@ -111,11 +114,12 @@
             <section>
                 <label for="">Direccion:</label>
                 <textarea><?php echo $dir; ?></textarea>
+                <a href="https://www.google.com.mx/maps/search/<?php echo $dirLink; ?>" target="_blank">Ver en Google Maps</a>
                 <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
             </section>
             <section class="busEst">
                 <label>Estado:</label>
-                <input type="text" disabled value="<?php echo $tab_estado ?>" id="status">
+                <input type="text" class="<?php echo $tab_estado ?>" disabled value="<?php echo $tab_estado ?>" id="status">
             </section>
             <button type="submit">Guardar</button>
         </form>

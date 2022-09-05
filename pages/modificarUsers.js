@@ -1,4 +1,25 @@
-document.querySelector(".updateUser main").addEventListener("click", e => {
+const cargar = async (msj,type,opc,funcion) =>{
+    let val= window.prompt(msj)
+    let d = new FormData();
+    d.append("sub",val);
+    d.append("type",type);
+    await fetch("../php/subPassword.php",{
+        method: 'POST',
+        body: d
+    }).then(res => res.text())
+      .then(async r => {
+        if(opc===1){
+            if(parseInt(r)!=0){
+                await obtenerUsers();
+                return;
+            }
+            await cargar(msj,type,1);
+        } else {
+            funcion(r)
+        }
+    })
+}
+document.querySelector(".updateUser").addEventListener("click", e => {
     const [t, ta] = [e.target, e.target.tagName]
     if (ta === "SPAN" || ta === "svg" || ta === "path") {
         let el = ta === "path" ? t.parentElement.parentElement : ta === "svg" ? t.parentElement : t
@@ -19,6 +40,22 @@ document.querySelector(".updateUser main").addEventListener("click", e => {
     }
 })
 window.addEventListener("submit",async e => {
+    const actualizar=async (inp,type,id)=>{
+        let d= new FormData();
+        d.append("upInp",inp)
+        d.append("uptype",type)
+        d.append("upid",id)
+        await fetch("../php/updateUser.php",{
+            method: 'POST',
+            body: d
+        })
+          .then(res => res.text())
+          .then(r => {
+              // console.log(r);
+              alert(r ? "Actualizado" :  "Error al actualizar")
+          })
+
+    }
     e.preventDefault()
     const exp = {
         name: /^[a-zA-ZÀ-ÿ\ ]{4,50}$/,
@@ -33,19 +70,19 @@ window.addEventListener("submit",async e => {
     if(type==="user" && !exp.user.test(inp)){alert("Usuario invalido es de 4 a 16 caracteres");return}
     if(type==="pass" && !exp.pass.test(inp)){alert("Contraseña invalida minimo 8 caracteres");return}
 
+    if(type!=="con"){
+        await actualizar(inp,type,id);
+        return
+    }
 
-    let d= new FormData();
-    d.append("upInp",inp)
-    d.append("uptype",type)
-    d.append("upid",id)
-    await fetch("../php/updateUser.php",{
-        method: 'POST',
-        body: d
+    cargar("Ingrese su contraseña principal","password",2,async r =>{
+        if(parseInt(r)!=0){
+            await actualizar(inp,type,id);
+            return;
+        } else {
+            alert("Contraseña Incorrecta")
+        }
     })
-        .then(res => res.text())
-        .then(r => {
-            alert(r ? "Actualizado" :  "Error al actualizar")
-        })
 })
 const component = ({id,name}) =>{
     return `
@@ -80,30 +117,21 @@ const component = ({id,name}) =>{
     `
 }
 const obtenerUsers = async ()=>{
+    let main = document.querySelector(".updateUser main")
+    main.innerHTML="";
     await fetch("../php/getUsers.php")
         .then(res => res.json())
         .then(r => {
             r.map(m =>{
-                document.querySelector(".updateUser main").innerHTML+=component(m)
+                main.innerHTML+=component(m)
             })
         })
 }
-const cargar = async () =>{
-    let val= window.prompt("Ingrese la contraseña")
-    let d = new FormData();
-    d.append("sub",val);
-    await fetch("../php/subPassword.php",{
-        method: 'POST',
-        body: d
-    }).then(res => res.text())
-      .then(async r => {
-        if(r=="0") await cargar();
-
-        await obtenerUsers();
-        return;
-    })
-}
-cargar();
+window.addEventListener("DOMContentLoaded",() =>{
+    cargar("Ingrese la contraseña","condonacion",1)
+})
+// console.log(cargar());
+;
 
 
 

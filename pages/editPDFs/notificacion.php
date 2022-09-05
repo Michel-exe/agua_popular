@@ -72,7 +72,7 @@
             </form>
         </div>
         <div class="rangePDF">
-            <input type="range" min=".5" max="4" step="0.1" value="1.2" id="rangeScale">
+            <input type="range" min=".5" max="4" step="0.1" value=".5" id="rangeScale">
         </div>
         <div class="editPDF">
             <form id="editPDF">

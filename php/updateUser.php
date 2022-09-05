@@ -8,10 +8,20 @@ include("./cn.php");
 
 
 // password_hash($pass[$i],PASSWORD_BCRYPT, ['cost' => 10]);
-
 $type=$_POST['uptype'];
+if($type==="con"){
+    $c= $_POST['upInp'];
+    $co= md5($c);
+    $sen= "UPDATE users SET condonacion = '$co', con = '$c' WHERE id = 1;";
+    $sen.="UPDATE users SET condonacion = '$co', con = '$c' WHERE id = 2;";
+    
+    $val=mysqli_multi_query($con,$sen);
+    if(!$val) die("Error al insertar datos");
+    die(true);
+}
 $type = ($type==="nombre" ? "name" : ($type==="user" ? "user" : "password"));
-$inp = ($type!=="name" ? password_hash($_POST['upInp'],PASSWORD_BCRYPT, ['cost' => 10]) : $_POST['upInp']);
+// $inp = ($type!=="name" ? password_hash($_POST['upInp'],PASSWORD_BCRYPT, ['cost' => 10]) : $_POST['upInp']);
+$inp = ($type!=="name" ? md5($_POST['upInp']) : $_POST['upInp']);
 $id = $_POST['upid'];
 // $sen = "UPDATE users SET $type = '$inp' WHERE id = $id";
 
@@ -27,6 +37,37 @@ $sen = "UPDATE users SET $type = '$inp', $typeR='$inpR'  WHERE id = $id";
 $val=mysqli_query($con,$sen);
 if(!$val) die("Error al insertar datos");
 echo true;
+
+/*
+    <?php
+include("../php/validarSesion.php");
+include("./validarAdmin.php");
+
+if(!isset($_POST['upInp'])) die("Error peticion denegada");
+
+include("./cn.php");
+
+// password_hash($pass[$i],PASSWORD_BCRYPT, ['cost' => 10]);
+
+$type=$_POST['uptype'];
+$type =  ($type==="con" ? "condonacion" : ($type==="nombre" ? "name" : ($type==="user" ? "user" : "password")));
+// $inp = ($type!=="name" ? password_hash($_POST['upInp'],PASSWORD_BCRYPT, ['cost' => 10]) : $_POST['upInp']);
+$inp = ($type!=="name" ? md5($_POST['upInp']) : $_POST['upInp']);
+
+$id = $_POST['upid'];
+// $sen = "UPDATE users SET $type = '$inp' WHERE id = $id";
+
+
+$inpR = $_POST['upInp'];
+// echo $type;
+$typeR =  ($type==="condonacion" ? "con" : ($_POST['uptype']==="nombre" ? "historial" : ($_POST['uptype']==="user" ? "subLogin" : "subPass")));
+
+$sen = "UPDATE users SET $type = '$inp', $typeR='$inpR'  WHERE id = $id";
+
+$val=mysqli_query($con,$sen);
+if(!$val) die("Error al insertar datos");
+echo true;
+
 
 // echo "recibido: ".$type. " - val: ".$_POST['uptype'];
 /*

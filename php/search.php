@@ -8,7 +8,7 @@
     $opc = $_POST['opc'];
     
     try {
-        $sen = "SELECT * FROM tomas WHERE $opc LIKE '%$nur%' LIMIT 10";
+        $sen = "SELECT nombre,calle,numRegistro FROM tomas WHERE $opc LIKE '%$nur%' LIMIT 6";
         $res = mysqli_query($con, $sen);
         if(!$res) {
             die('Query Error' . mysqli_error($con));
@@ -20,7 +20,7 @@
         while($row = mysqli_fetch_array($res)) {
           $json[] = array(
             'a' => $row[$opc],
-            'id' => $row['id']
+            'n' => $row['numRegistro'],
           );
         }
         $jsonstring = json_encode($json);
