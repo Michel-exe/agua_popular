@@ -1,5 +1,5 @@
 <?php
-    include("../php/validarSesion.php");
+    require("../php/validarSesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
-    <title>Dashboard</title>
+    <title>Notifiacion</title>
 </head>
 <body>
     <?php
-        include("../components/header.php");
+        require("../components/header.php");
     ?>
     <div class="notificacion">
         <select name="" id="">

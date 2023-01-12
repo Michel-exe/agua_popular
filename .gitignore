@@ -13,6 +13,9 @@
 /src/*
 /src/*
 /designs/*
+# /compressed/*
+/js/.js*
+/exp/*
 
 # misc
 .DS_Store
@@ -25,7 +28,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/exp/*
 *.scss
 *.css.map
 fetch.js
+*.sql
+agua2.sql
+js/login.min.js
+
+pdfError/*
+compilador/*
+compilador/pack/*
+compilador/php/*

@@ -1,12 +1,14 @@
 <div class="search">
     <form class="inpSearch" id="inpSearch">
-        <input type="text" minlength="0" placeholder="Buscar" list="autocomplet">
+        <input type="text" id="SearchInput" minlength="0" placeholder="Buscar" list="autocomplet">
         <select>
-            <option value="nur">Nur</option>
+            <option value="numRegistro">Nur</option>
             <option value="nombre">Nombre</option>
-            <option value="apellido">Apellido</option>
             <option value="calle">Calle</option>
         </select>
+        <datalist id="autocomplet">
+            <option value="Romero"></option>
+        </datalist>
         <button type="submit">
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" t="1569683742680" viewBox="0 0 1024 1024" version="1.1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                 <defs></defs>
