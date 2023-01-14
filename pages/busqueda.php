@@ -155,8 +155,8 @@ while ($row = mysqli_fetch_array($res)) {
             <button type="submit" id="confirmPago" disabled>Confirmar Pago</button>
         </form>
     </div>
-    <script src="busqueda.js"></script>
-    <script src="code.js"></script>
+    <script src="./code.js"></script>
+    <script src="./busqueda.js"></script>
 </body>
 
 </html>

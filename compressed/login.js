@@ -1,8 +1,14 @@
 const enviar = async (ruta, data, funcion) => {
     await fetch(ruta, { method: 'POST', body: data }).then(res => res.text()).then(r => { funcion(r) })
 };
-const pagar = (nur)=>{
-
+const pago =async ()=>{
+    const data= new FormData();
+    data.append("tipo","agregar")
+    data.append("sen","123")
+    await fetch("./php/agregar.php", { 
+        method: 'POST', body: data 
+    }).then(res => res.text())
+      .then(r => { console.log(r); })
 }
 
 const validarForm = async (e) => {

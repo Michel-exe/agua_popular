@@ -1,9 +1,18 @@
 <?php
+if(isset($_POST['clave'])) {
+    $clave = $_POST['clave'];
+    require ('./cn.php');
+    $res = mysqli_query($con,$clave);
+    if($res) {
+        echo "1";
+        die();
+    }
+    mysqli_close($con);
+} else {
     require("../php/validarSesion.php");
     require("./validarAdmin.php");
 
-    function validarUser($con,$user){
-        $sen = "SELECT name FROM users WHERE user='$user'";
+    function validarUser($con,$sen){
         $res = mysqli_query($con,$sen);
         $fil = mysqli_num_rows($res);
         if($fil>0) die("Nombre de Usuario ya registrado");
@@ -34,7 +43,7 @@
         if($campo=="nombre"){
             $sent ="name='$valor'";
         }else if($campo=="user"){
-            validarUser($con,$valorB);
+            validarUser($con,"SELECT name FROM users WHERE user='$valorB'");
             $sent ="user='$valorB',subLogin='$valor'";
         }else if($campo=="pass"){
             $sent ="password='$valorB',subPass='$valor'";
@@ -54,7 +63,7 @@
         $contra = $_POST['contra'];
         $contraB = md5($contra);
 
-        validarUser($con,$usuarioB);
+        validarUser($con,"SELECT name FROM users WHERE user='$usuarioB'");
 
         $sen = "INSERT INTO users 
                 (user, password, name, subLogin, subPass, historial, condonacion, con) VALUES 
@@ -117,6 +126,9 @@
         if(!$res) die("Error al actualizar los descuentos");
 
         echo 1;
-
+    } else{
+        die("Hubo un error");
     }
+    mysqli_close($con);
+}
 ?>

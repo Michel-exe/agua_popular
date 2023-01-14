@@ -161,7 +161,6 @@
             </section>
         </div>
     </div>
-    <!-- <script src='./modificarUsers.js'></script> -->
     <script src='../compressed/modificarUsers.min.js'></script>
 </body>
 </html>

@@ -76,7 +76,7 @@ const eventosFetch = async () =>{
             if(t==campos[2]) return exp.pass.test(tar[c].value);
             if(t==campos[3]) return exp.nombre.test(tar[c].value);
             if(t==campos[4]) return exp.condonacion.test(tar[c].value);
-        })
+        });
         return [(!retorno.includes(false)),(mensajes[type.length!=1 ? retorno.findIndex(r => r==false) : campos.findIndex(r=> r==type[0])])];
 
     };
